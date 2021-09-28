@@ -4,8 +4,13 @@ import boto3
 import sys
 from datetime import datetime
 import time as t 
+from botocore.config import Config
 
-client = boto3.client("rds")
+my_config = Config(
+    region_name='us-west-2'
+)
+
+client = boto3.client("rds", config=my_config)
 
 timestamp = datetime.now().strftime("%Y%m%d")
 
